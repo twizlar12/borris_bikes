@@ -14,6 +14,11 @@ Nouns (objects):
 Verbs (messages):
 - release_a_bike
 
+person -release_a_bike-> docking_station
+
+DockingStation <-- release_bike --> a Bike
+
+
 User story 2:
 As a person,
 So that I can use a good bike,
@@ -26,4 +31,6 @@ Nouns (objects):
 Verbs (messages):
 - bike_is_working
 
- Draw a diagram that shows how your Objects will use Messages to communicate with one another
+bike -is_bike_working-> person
+
+Bike <-- working? --> true/false
