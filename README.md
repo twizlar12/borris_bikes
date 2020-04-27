@@ -34,3 +34,14 @@ Verbs (messages):
 bike -is_bike_working-> person
 
 Bike <-- working? --> true/false
+
+Write down the type of error:
+- NameError
+Write down the file path where the error happened
+- <!-- /Users/avinhurry/.rvm/rubies/ruby-2.7.0/bin/irb:23:in `<main> -->
+Write down the line number of the error
+- 23
+Use the Ruby Documentation to find out what the error means
+- Raised when a given name is invalid or undefined.
+Suggest one way of solving the error.
+- Define a class "DockingStation"
