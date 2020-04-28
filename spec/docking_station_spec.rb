@@ -1,4 +1,15 @@
 require 'docking_station'
 describe DockingStation do
-  it {is_expected.to respond_to :release_bike}  
+  
+  it {is_expected.to respond_to :release_bike}
+
+  it "gets a working bike" do
+    bike = subject.release_bike
+    expect(bike.working?).to eq(true)
+  end
 end
+
+# Add a test to your DockingStation specification that a) gets a bike,
+# and then b) expects the bike to be working
+# Make this test pass
+# Feature-test the feature again.
