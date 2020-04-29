@@ -7,4 +7,15 @@ describe DockingStation do
     bike = subject.release_bike
     expect(bike.working?).to eq(true)
   end
+
+  it "return a bike" do
+    bike = subject.dock_bike
+    expect(bike).to eq(true)
+  end
+
+  it "check if bike is avaliable" do
+    bike = subject
+    expect(bike.avaliable?).to eq(true)
+  end
+
 end
