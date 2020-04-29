@@ -1,9 +1,5 @@
 require_relative 'bike'
 class DockingStation
-
-  attr_reader :avaliable
-  attr_writer :avaliable
-
   attr_reader :capacity
   attr_writer :capacity
 
@@ -15,14 +11,19 @@ class DockingStation
   def check_capacity
     if @capacity.empty?
       @avaliable = false
+      @full = false
+    elsif @capacity.count == 20
+      @avaliable = true
+      @full = true
     else
+      @full = false
       @avaliable = true
     end
   end
 
   def release_bike
     check_capacity()
-    if @avaliable
+    if @avaliable 
     @capacity.pop
     Bike.new
     else
@@ -32,9 +33,9 @@ class DockingStation
 
   def dock_bike(bike)
     check_capacity
-    if @avaliable && @capacity.count == 20
+    if @avaliable && @full
       fail ("dock full")
-    elsif @capacity.count < 20
+    elsif @full == false
       @capacity << bike
       return "#{bike} has been docked"
     end
