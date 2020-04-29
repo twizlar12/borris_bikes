@@ -18,7 +18,10 @@ class DockingStation
   end
 
   def dock_bike
-    @avaliable = true
-    @avaliable
+    if @avaliable
+      fail ("dock full")
+    else
+      @avaliable = true
+    end
   end
 end

@@ -9,8 +9,9 @@ describe DockingStation do
   end
 
   it "return a bike" do
-    bike = subject.dock_bike
-    expect(bike).to eq(true)
+    bike = subject
+    bike.avaliable = false
+    expect(bike.dock_bike).to eq(true)
   end
 
   it "check if bike is avaliable" do
@@ -20,8 +21,14 @@ describe DockingStation do
 
   it "do not realese bike if unavaliable" do
     bike = subject
-    bike.avaliable = false
-    expect{bike.release_bike}.to raise_error("bike unavaliable")
+    expect{bike.avaliable = false
+      bike.release_bike}.to raise_error("bike unavaliable")
+  end
+
+  it "do not allow bike to be docked if dock full" do
+    bike = subject
+    expect{bike.avaliable = true
+      bike.dock_bike}.to raise_error("dock full")
   end
 
 end
