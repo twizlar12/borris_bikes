@@ -1,25 +1,24 @@
 require_relative 'bike'
 class DockingStation
+
+  attr_reader :avaliable
+  attr_writer :avaliable
+
   def initialize
-    @bike = true
+    @avaliable = true
   end
 
   def release_bike
-    @bike = false
+    if @avaliable
+    @avaliable = false
     Bike.new
-  end
-
-  def dock_bike
-    @bike = true
-    @bike
-  end
-
-  def avaliable?
-    if @bike
-      true
     else
-      false
+      fail ("bike unavaliable")
     end
   end
 
+  def dock_bike
+    @avaliable = true
+    @avaliable
+  end
 end

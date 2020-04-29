@@ -15,7 +15,13 @@ describe DockingStation do
 
   it "check if bike is avaliable" do
     bike = subject
-    expect(bike.avaliable?).to eq(true)
+    expect(bike.avaliable).to eq(true)
+  end
+
+  it "do not realese bike if unavaliable" do
+    bike = subject
+    bike.avaliable = false
+    expect{bike.release_bike}.to raise_error("bike unavaliable")
   end
 
 end
