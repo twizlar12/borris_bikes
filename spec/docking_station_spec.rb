@@ -10,7 +10,7 @@ describe DockingStation do
 
   it "return a bike" do
     bike = subject
-    bike.avaliable = false
+    bike.capacity = 19
     expect(bike.dock_bike).to eq(true)
   end
 
@@ -21,7 +21,7 @@ describe DockingStation do
 
   it "do not realese bike if unavaliable" do
     bike = subject
-    expect{bike.avaliable = false
+    expect{bike.capacity = 0
       bike.release_bike}.to raise_error("bike unavaliable")
   end
 
@@ -29,6 +29,11 @@ describe DockingStation do
     bike = subject
     expect{bike.avaliable = true
       bike.dock_bike}.to raise_error("dock full")
+  end
+
+  it "new init should set capacity" do
+    bike = subject
+    expect(bike.capacity).to eq(20)
   end
 
 end
