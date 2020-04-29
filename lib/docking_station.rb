@@ -8,12 +8,12 @@ class DockingStation
   attr_writer :capacity
 
   def initialize
-    @capacity = 20
-    @avaliable = true
+    @capacity = []
+    check_capacity()
   end
 
   def check_capacity
-    if @capacity == 0
+    if @capacity.empty?
       @avaliable = false
     else
       @avaliable = true
@@ -23,20 +23,20 @@ class DockingStation
   def release_bike
     check_capacity()
     if @avaliable
-    @capacity -= 1
+    @capacity.pop
     Bike.new
     else
       fail ("bike unavaliable")
     end
   end
 
-  def dock_bike
-    check_capacity()
-    if @avaliable && @capacity == 20
+  def dock_bike(bike)
+    check_capacity
+    if @avaliable && @capacity.count == 20
       fail ("dock full")
-    elsif capacity < 20
-      @capacity += 1
-      @avaliable = true
+    elsif @capacity.count < 20
+      @capacity << bike
+      return "#{bike} has been docked"
     end
   end
 end
