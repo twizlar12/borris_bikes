@@ -3,6 +3,8 @@ class DockingStation
   attr_reader :capacity
   attr_writer :capacity
 
+  DEFAULT_CAPACITY = 20
+
   def initialize
     @capacity = []
     check_capacity()
@@ -12,7 +14,7 @@ class DockingStation
     if @capacity.empty?
       @avaliable = false
       @full = false
-    elsif @capacity.count == 20
+    elsif @capacity.count == DEFAULT_CAPACITY
       @avaliable = true
       @full = true
     else

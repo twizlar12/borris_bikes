@@ -1,4 +1,5 @@
 require 'docking_station'
+
 describe DockingStation do
   
   it {is_expected.to respond_to :release_bike}
@@ -27,7 +28,7 @@ describe DockingStation do
 
   it "do not allow bike to be docked if dock full" do
     bike = subject
-    20.times{bike.dock_bike("bike10")}
+    DockingStation::DEFAULT_CAPACITY.times{bike.dock_bike("bike10")}
     expect{
       bike.dock_bike("bike11")}.to raise_error("dock full")
   end
