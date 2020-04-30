@@ -4,11 +4,11 @@ describe DockingStation do
   
   it {is_expected.to respond_to :release_bike}
 
-  it "release bike" do
-    bike = DockingStation.new
-    bike.dock_bike("bike9")
-    expect(bike.release_bike).to be_instance_of Bike
-  end
+  # it "release bike" do
+  #   bike = DockingStation.new
+  #   bike.dock_bike("bike9")
+  #   expect(bike.release_bike).to be_instance_of Bike
+  # end
 
   it "return a bike" do
     bike = subject
@@ -59,6 +59,6 @@ describe DockingStation do
     released_bike = subject.release_bike
   # Now the double responds to working?
   # with the value true
-    expect(released_bike).to be_instance_of Bike
+    expect(released_bike).to be_working
   end
 end
