@@ -27,10 +27,22 @@ describe DockingStation do
       bike.dock_bike("bike11")}.to raise_error("dock full")
   end
 
+  it "do not allow bike to be docked if dock full and capacity is changed" do
+    bike = DockingStation.new(30)
+    bike.capacity.times{bike.dock_bike("bike10")}
+    expect{
+      bike.dock_bike("bike11")}.to raise_error("dock full")
+  end
+
+  it "check capacity when init" do
+    bike = subject
+    expect(bike.capacity).to eq(20)
+  end
 
   it "set capacity when init" do
-    bike = subject
-    bike.capacity = 30
+    bike = DockingStation.new(30)
     expect(bike.capacity).to eq(30)
   end
+
+
 end
