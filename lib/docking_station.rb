@@ -12,7 +12,8 @@ class DockingStation
 
   def release_bike
     check_capacity()
-    if @avaliable 
+    check_working()
+    if @avaliable && @working
     @bikes.pop
     Bike.new
     else
@@ -20,12 +21,12 @@ class DockingStation
     end
   end
 
-  def dock_bike(bike)
-    check_capacity
+  def dock_bike(bike, condition="working")
+    check_capacity()
     if @avaliable && @full
       fail ("dock full")
     elsif @full == false
-      @bikes << bike
+      @bikes << bike + condition
       return "#{bike} has been docked"
     end
   end
@@ -33,6 +34,16 @@ class DockingStation
   private 
 
   attr_reader :bikes
+
+  def check_working
+    @bikes.each do |bike|
+      if bike.include? "broken"
+        @working = false
+      else
+        @working = true
+      end
+    end
+  end
 
   def check_capacity
     if @bikes.empty?
