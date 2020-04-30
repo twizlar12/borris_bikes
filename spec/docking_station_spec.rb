@@ -49,4 +49,11 @@ describe DockingStation do
     bike.dock_bike("bike10", "broken")
     expect{bike.release_bike}.to raise_error("bike unavaliable")
   end
+
+  it 'releases working bikes' do
+
+    subject.dock_bike double(:bike)
+    bike = subject.release_bike
+    expect(bike).to be_working
+  end
 end
